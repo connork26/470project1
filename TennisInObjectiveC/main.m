@@ -9,10 +9,22 @@
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
+#import "Player.h"
+#import "Match.h"
+#import "MatchScore.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
+        srandom(19);
+        Player *player1 = [[Player alloc] initWithProbability: 50];
+        Player *player2 = [[Player alloc] initWithProbability: 70];
+        
+        
+        Match * match = [[Match alloc] initWithFirstPlayer:player1 secondPlayer:player2];
+        MatchScore *score = [match play: player1];  // let player1 serve for this game.
+        NSLog(@"%@", score);
+        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
