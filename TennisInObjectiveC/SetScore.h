@@ -11,8 +11,8 @@
 
 @interface SetScore : Score
 
--(instancetype) initWithFirstPlayer: (Player *) p1 secondPlayer: (Player *) p2;
 -(BOOL) needToPlayTieBreaker;
+-(void) addTieScore: (TieBreakerScore *) score;
 
 @property (nonatomic, strong) TieBreakerScore * tieScore;
 

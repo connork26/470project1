@@ -22,18 +22,27 @@
 }
 
 -(SetScore *) play:(Player *)p {
+    Player * server = p;
     SetScore * score = [[SetScore alloc] initWithFirstPlayer:self.player1 secondPlayer:self.player2];
     while (![score haveAWinner]) {
         if ([score needToPlayTieBreaker]){
             TieBreaker * tie = [[TieBreaker alloc] initWithFirstPlayer:self.player1 secondPlayer:self.player2];
-            score.tieScore = [tie play:p];
-            [score addScore:[score.tieScore getWinner]];
+            TieBreakerScore * tieScore = [tie play:server];
+            [score addScore:[tieScore getWinner]];
+            [score addTieScore: tieScore];
         } else{
             Game * game = [[Game alloc] initWithFirstPlayer:self.player1 secondPlayer:self.player2];
-            GameScore * gameScore = [game play:self.player1];
+            GameScore * gameScore = [game play:server];
             
             [score addScore:[gameScore getWinner]];
             gameScore = nil;
+        }
+        
+        if (server == self.player1){
+            server = self.player2;
+        
+        } else {
+            server = self.player1;
         }
     }
     

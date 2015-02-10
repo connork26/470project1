@@ -15,12 +15,17 @@
 
 -(TieBreakerScore *) play:(Player *)p{
     TieBreakerScore * tieScore = [[TieBreakerScore alloc] initWithFirstPlayer:self.player1 secondPlayer:self.player2];
-    
+    int count = 0;
     while (![tieScore haveAWinner]){
         Game * game = [[Game alloc] initWithFirstPlayer:self.player1 secondPlayer:self.player2];
-        GameScore * gameScore = [game play:self.player1];
+        GameScore * gameScore = [game play:p];
         
         [tieScore addScore:[gameScore getWinner]];
+        
+        if ((count % 2) == 0){
+            p = (p == self.player1 ? self.player2 : self.player1);
+        }
+        count++;
     }
     
     return tieScore;

@@ -11,5 +11,6 @@
 @interface TieBreakerScore : Score
 
 -(BOOL) haveAWinner;
+-(NSString *) description;
 
 @end

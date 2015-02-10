@@ -13,12 +13,7 @@
 
 @implementation Match
 
--(instancetype) initWithFirstPlayer: (Player *) p1 secondPlayer:(Player *) p2
-{
-    if( (self = [super initWithFirstPlayer:p1 secondPlayer:p2] ) == nil )
-        return nil;
-    return self;
-}
+
 
 -(MatchScore *) play:(Player *)p{
     MatchScore * score = [[MatchScore alloc] initWithFirstPlayer:self.player1 secondPlayer:self.player2];

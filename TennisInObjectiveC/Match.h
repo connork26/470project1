@@ -11,7 +11,6 @@
 
 @interface Match : Competition
 
--(instancetype) initWithFirstPlayer:(Player *)p1 secondPlayer:(Player *)p2;
 -(MatchScore *) play: (Player *) p;
 
 @end

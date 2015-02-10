@@ -10,19 +10,25 @@
 
 @implementation SetScore
 
--(instancetype) initWithFirstPlayer: (Player *) p1 secondPlayer: (Player *) p2
-{
-    if( (self = [super initWithFirstPlayer:p2 secondPlayer:p2   ]) == nil)
-        return nil;
-    return self;
-}
-
 -(BOOL) haveAWinner{
     return ((self.player1Score == 7 || self.player2Score == 7) || ((self.player1Score >= 6 || self.player2Score >= 6) && (abs(self.player1Score - self.player2Score) >= 2)));
 }
 
 -(BOOL) needToPlayTieBreaker{
     return (self.player1Score == 6 && self.player2Score == 6);
+}
+
+-(NSString *) description {
+    NSString * score = [NSString stringWithFormat:@"\nplayer1 score = %d\nplayer2 score = %d\n", self.player1Score, self.player2Score ];
+    if (self.tieScore) {
+        score = [score stringByAppendingString: [self.tieScore description]];
+    }
+    
+    return [score stringByAppendingString:@"\n"];
+}
+
+-(void) addTieScore:(TieBreakerScore *) score{
+    self.tieScore = score;
 }
 
 @end

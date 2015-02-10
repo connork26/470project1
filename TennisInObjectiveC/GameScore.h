@@ -11,7 +11,5 @@
 
 @interface GameScore : Score
 
--(instancetype) initWithFirstPlayer: (Player *) p1 secondPlayer: (Player *) p2;
-
 
 @end

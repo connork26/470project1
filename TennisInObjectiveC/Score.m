@@ -23,6 +23,7 @@
 
 -(Player *)getWinner
 {
+    self.winner = (self.player1Score > self.player2Score ? self.player1 : self.player2);
     return self.player1Score > self.player2Score ? self.player1 : self.player2;
 }
 
